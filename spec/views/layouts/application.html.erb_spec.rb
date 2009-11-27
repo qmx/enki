@@ -13,6 +13,14 @@ describe "/layouts/application.html.erb" do
       :slug     => 'about'.taint
     )
     Page.stub!(:find).and_return([mock_page])
+
+    mock_link = mock_model(Link,
+      :name     => 'link',
+      :url      => 'http://link',
+      :hint     => 'a smart url',
+      :enabled  => true
+    )
+    Link.stub!(:find).and_return([mock_link])
   end
 
   it 'renders' do

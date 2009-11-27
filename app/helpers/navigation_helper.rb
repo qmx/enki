@@ -12,6 +12,10 @@ module NavigationHelper
     @popular_tags.collect {|tag| link.new(tag.name, posts_path(:tag => tag)) }
   end
 
+  def links_list
+    @links = Link.all(:conditions => { :enabled => true })
+  end
+
   def class_for_tab(tab_name, index)
     classes = []
     classes << 'current' if "admin/#{tab_name.downcase}" == params[:controller]

@@ -35,6 +35,14 @@
           <% end -%>
         </ul>
       <% end -%>
+      <% unless links_list.empty? -%>
+        <h2>Links</h2>
+        <ul>
+          <% links_list.each do |link| -%>
+            <li><%= link_to(h(link.name), link.url, :title => link.hint) %></li>
+          <% end -%>
+        </ul>
+      <% end -%>
       <form method="get" id="sform" action="http://www.google.com/search">
         <div>
           <h2><label for="q">Search</label></h2>

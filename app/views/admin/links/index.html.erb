@@ -1,0 +1,29 @@
+<h1>Your links</h1>
+
+<table cellspacing="0" cellpadding="0">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Url</th>
+      <th>Enabled</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @links.empty? -%>
+      <tr><td colspan="5">There are no links at this time.</td></tr>
+    <% else -%>
+      <% @links.each do |link| %>
+        <tr class="<%= cycle('', 'alt') %>">
+          <td><%=h link.name %></td>
+          <td><%=h link.url %></td>
+          <td><%=h link.enabled %></td>
+          <td>
+            <%= link_to(image_tag('silk/pencil.png', :alt => 'Edit'), edit_admin_link_path(link)) %>
+            <%= link_to(image_tag('silk/delete.png'), admin_link_path(link), :method => :delete, :confirm => "You are about to delete this link. This is permanent.\n\nAre you ABSOLUTELY sure?") %>
+          </td>
+        </tr>
+      <% end -%>
+    <% end -%>
+  </tbody>
+</table>
